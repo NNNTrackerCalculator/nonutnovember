@@ -29,10 +29,10 @@
         var month = date.getMonth();
         var day = date.getDate();
         if(month == 11){
-          document.body.innerHTML = '<h1>It\'s over!</h1>'
+          document.body.innerHTML = '<h2>It\'s over!</h2>'
         }
         else if(month < 10){
-          document.body.innerHTML = '<h1>Waiting for November...</h1>'
+          document.body.innerHTML = '<h2>Waiting for November...</h2>'
           var numDaysLeft = 1-day;
           if(month < 10){
             numDaysLeft += 31;
@@ -67,11 +67,39 @@
               }
             }
           }
-          document.body.innerHTML += '<br><p>There are ' + numDaysLeft + ' days left</p>';
+          if(numDaysLeft >= 2){
+            document.body.innerHTML += '<br><p>There are ' + numDaysLeft + ' days left</p>';
+          }
+          else if(numDaysLeft == 1){
+            var numMinutes = 59 - minutes;
+            if(seconds == 0){
+              numMinutes ++;
+            }
+            var numHours = 23 - hour;
+            if(seconds == 0 && minutes == 0){
+              numHours ++;
+            }
+            document.body.innerHTML += '<br><p>' + numHours + ' hours, ' + numMinutes + ' minutes, ' + (60 - seconds) + ' seconds remain</p>';
+          }
         }
         else{
-          var fraction = ((day * 86400) - 86400 + (hour * 3600) + 3600 + (minutes * 60) + seconds) / 25956;
-          document.body.innerHTML = fraction.toFixed(4) + "% is over!"
+          var fraction = ((day-1) * 86400 + hour * 3600 + minutes * 60 + seconds) / 25956;
+          if(year == 2021 && (day > 7 || day == 7 && hour >= 2)){
+            fraction += (3600/25956);
+          }
+          else if(year == 2022 && (day > 6 || day == 6 && hour >= 2)){
+            fraction += (3600/25956);
+          }
+          else if(year == 2023 && (day > 5 || day == 5 && hour >= 2)){
+            fraction += (3600/25956);
+          }
+          document.body.innerHTML = '<h2>' + fraction.toFixed(4) + '% is over!</h2>'
+          var numMinutes = 59 - minutes;
+          if(seconds == 0){
+            numMinutes ++;
+          }
+          document.body.innerHTML += '<br><p>' + 720 - Math.floor(fraction * 721) + ' hours, ' + numMinutes + ' minutes, ' + (60 - seconds) + ' seconds remain</p>';
+          
         }
         var x = Math.random() * 200 + 200;
         setTimeout(refreshData, x);
