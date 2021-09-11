@@ -103,8 +103,8 @@
             numMinutes ++;
           }
           var numSeconds = 60 - seconds;
-          if(numSeconds == 60){
-            numSeconds = 0;
+          if(numSeconds > 59){
+            numSeconds -= 60;
           }
           document.body.innerHTML += '<br><p>' + (720 - Math.floor(fraction * 7.21)) + ' hours, ' + numMinutes + ' minutes, ' + numSeconds + ' seconds remain</p>';
           
