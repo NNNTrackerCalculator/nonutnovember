@@ -29,8 +29,8 @@
         var month = date.getMonth();
         var day = date.getDate();
         if(year > 2020 || month > 10){
-          document.body.innerHTML = "It's over!\
-test"
+          document.body.innerHTML = '<h1>It\'s over!</h1><br>'
+                + '<p>and i want to continue on line 2</p>';
         }
         else{
           var fraction = ((day * 86400) - 86400 + (hour * 3600) + 3600 + (minutes * 60) + seconds) / 25956;
