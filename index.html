@@ -28,10 +28,46 @@
         var year = date.getFullYear();
         var month = date.getMonth();
         var day = date.getDate();
-        if(year > 2020 || month > 10){
-          document.body.innerHTML = '<h1>It\'s over!</h1><br>'
-                + '<p>and i want to continue on line 2</p>';
-          document.body.innerHTML += '<br><p>See everyone later!</p>';
+        if(month == 11){
+          document.body.innerHTML = '<h1>It\'s over!</h1>'
+        }
+        else if(month < 10){
+          document.body.innerHTML = '<h1>Waiting for November...</h1>'
+          var numDaysLeft = 1-day;
+          if(month <= 10){
+            numDaysLeft += 31;
+            if(month <= 9){
+              numDaysLeft += 30;
+              if(month <= 8){
+                numDaysLeft += 31;
+                if(month <= 7){
+                  numDaysLeft += 31;
+                  if(month <= 6){
+                    numDaysLeft += 30;
+                    if(month <= 5){
+                      numDaysLeft += 31;
+                      if(month <= 4){
+                        numDaysLeft += 30;
+                        if(month <= 3){
+                          numDaysLeft += 31;
+                          if(month <= 2){
+                            numDaysLeft += 28;
+                            if(year % 4 == 0){
+                              numDaysLeft += 1;
+                            }
+                            if(month == 1){
+                              numDaysLeft += 31;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          document.body.innerHTML += '<br><p>There are </p>' + numDaysLeft + '<p> days left</p>';
         }
         else{
           var fraction = ((day * 86400) - 86400 + (hour * 3600) + 3600 + (minutes * 60) + seconds) / 25956;
