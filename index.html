@@ -79,7 +79,11 @@
             if(seconds == 0 && minutes == 0){
               numHours ++;
             }
-            document.body.innerHTML += '<br><p>' + numHours + ' hours, ' + numMinutes + ' minutes, ' + ((60 - seconds) % 60) + ' seconds remain</p>';
+            var numSeconds = 60 - seconds;
+            if(numSeconds == 60){
+              numSeconds = 0;
+            }
+            document.body.innerHTML += '<br><p>' + numHours + ' hours, ' + numMinutes + ' minutes, ' + numSeconds + ' seconds remain</p>';
           }
         }
         else{
@@ -98,7 +102,11 @@
           if(seconds == 0){
             numMinutes ++;
           }
-          document.body.innerHTML += '<br><p>' + (720 - Math.floor(fraction * 7.21)) + ' hours, ' + numMinutes + ' minutes, ' + ((60 - seconds) % 60) + ' seconds remain</p>';
+          var numSeconds = 60 - seconds;
+          if(numSeconds == 60){
+            numSeconds = 0;
+          }
+          document.body.innerHTML += '<br><p>' + (720 - Math.floor(fraction * 7.21)) + ' hours, ' + numMinutes + ' minutes, ' + numSeconds + ' seconds remain</p>';
           
         }
         var x = Math.random() * 200 + 200;
