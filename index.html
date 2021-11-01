@@ -103,6 +103,9 @@
           if(seconds == 0){
             numMinutes ++;
           }
+          if(numMinutes == 60){
+            numMinutes = 0;
+          }
           var numSeconds = 60 - seconds;
           if(numSeconds == 60){
             numSeconds = 0;
