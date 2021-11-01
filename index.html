@@ -21,6 +21,7 @@
         var date = new Date;
         date.setTime(date.getTime());
 
+        var ms = date.getMilliseconds();
         var seconds = date.getSeconds();
         var minutes = date.getMinutes();
         var hour = date.getHours();
@@ -87,7 +88,7 @@
           }
         }
         else{
-          var fraction = ((day-1) * 86400 + hour * 3600 + minutes * 60 + seconds) / 25956;
+          var fraction = ((day-1) * 86400 + hour * 3600 + minutes * 60 + seconds + ms/1000) / 25956;
           if(year == 2021 && (day > 7 || day == 7 && hour >= 2)){
             fraction += (3600/25956);
           }
